@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PumpApp - Registrazione</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>🏋️ PumpApp</h1>
+            <p class="tagline">Gestisci la tua palestra, Traccia i tuoi progressi</p>
+        </div>
+        <nav>
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="login.html" class="nav-link">Login</a>
+            <a href="register.html" class="nav-link active">Registrazione</a>
+            <a href="scheda.html" class="nav-link">Scheda Esercizi</a>
+            <a href="profile.html" class="nav-link">Profilo</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="register" class="auth-container">
+            <div class="auth-image">
+                <img src="Progetto/frontend definitivo/Register.png" alt="Registrazione" class="responsive-img">
+            </div>
+            <div class="auth-form">
+                <h2>Crea il tuo Account</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Nome Completo:</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required placeholder="inserisci@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Ruolo:</label>
+                        <select id="role" name="role" required>
+                            <option value="">-- Seleziona un ruolo --</option>
+                            <option value="athlete">Atleta</option>
+                            <option value="gym">Palestra</option>
+                            <option value="trainer">Trainer</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required placeholder="••••••••">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Conferma Password:</label>
+                        <input type="password" id="confirm-password" name="confirm-password" required placeholder="••••••••">
+                    </div>
+                    <div class="form-group checkbox">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">Accetto i Termini e le Condizioni</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary full-width">Registrati</button>
+                </form>
+                <div class="auth-links">
+                    <span>Hai già un account? <a href="login.html">Accedi qui</a></span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 PumpApp. Tutti i diritti riservati.</p>
+    </footer>
+</body>
+</html>

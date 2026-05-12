@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PumpApp - Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>🏋️ PumpApp</h1>
+            <p class="tagline">Gestisci la tua palestra, Traccia i tuoi progressi</p>
+        </div>
+        <nav>
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="login.html" class="nav-link active">Login</a>
+            <a href="register.html" class="nav-link">Registrazione</a>
+            <a href="scheda.html" class="nav-link">Scheda Esercizi</a>
+            <a href="profile.html" class="nav-link">Profilo</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="login" class="auth-container">
+            <div class="auth-image">
+                <img src="Progetto/frontend definitivo/Login.png" alt="Login" class="responsive-img">
+            </div>
+            <div class="auth-form">
+                <h2>Accedi a PumpApp</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required placeholder="inserisci@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required placeholder="••••••••">
+                    </div>
+                    <div class="form-group checkbox">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Ricordami</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary full-width">Accedi</button>
+                </form>
+                <div class="auth-links">
+                    <a href="#">Password dimenticata?</a>
+                    <span>|</span>
+                    <a href="register.html">Crea un account</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 PumpApp. Tutti i diritti riservati.</p>
+    </footer>
+</body>
+</html>

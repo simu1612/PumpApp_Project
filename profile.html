@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PumpApp - Profilo Utente</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>🏋️ PumpApp</h1>
+            <p class="tagline">Gestisci la tua palestra, Traccia i tuoi progressi</p>
+        </div>
+        <nav>
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="login.html" class="nav-link">Login</a>
+            <a href="register.html" class="nav-link">Registrazione</a>
+            <a href="scheda.html" class="nav-link">Scheda Esercizi</a>
+            <a href="profile.html" class="nav-link active">Profilo</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="profile-section">
+            <div class="profile-header">
+                <img src="Progetto/frontend definitivo/Profile2.jpg" alt="Profilo Utente" class="profile-avatar">
+                <div class="profile-info">
+                    <h2>Giovanni Rossi</h2>
+                    <p class="profile-role">Atleta</p>
+                </div>
+            </div>
+
+            <div class="profile-stats">
+                <div class="stat-card">
+                    <h4>Allenamenti</h4>
+                    <p class="stat-value">48</p>
+                </div>
+                <div class="stat-card">
+                    <h4>Peso (kg)</h4>
+                    <p class="stat-value">82</p>
+                </div>
+                <div class="stat-card">
+                    <h4>Calorie Bruciate</h4>
+                    <p class="stat-value">12,450</p>
+                </div>
+                <div class="stat-card">
+                    <h4>Obiettivi</h4>
+                    <p class="stat-value">5/8</p>
+                </div>
+            </div>
+
+            <div class="profile-tabs">
+                <div class="tabs-navigation">
+                    <button class="tab-button active" onclick="openTab(event, 'info')">Informazioni</button>
+                    <button class="tab-button" onclick="openTab(event, 'security')">Sicurezza</button>
+                    <button class="tab-button" onclick="openTab(event, 'goals')">Obiettivi</button>
+                </div>
+
+                <!-- TAB 1: Informazioni -->
+                <div id="info" class="tab-content active">
+                    <h3>Informazioni Personali</h3>
+                    <form class="profile-form">
+                        <div class="form-group">
+                            <label for="fullname">Nome Completo:</label>
+                            <input type="text" id="fullname" value="Giovanni Rossi" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" value="giovanni@example.com" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefono:</label>
+                            <input type="tel" id="phone" value="+39 3123456789" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Età:</label>
+                            <input type="number" id="age" value="28" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Genere:</label>
+                            <select id="gender" class="form-input">
+                                <option value="male">Maschio</option>
+                                <option value="female">Femmina</option>
+                                <option value="other">Altro</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Salva Modifiche</button>
+                    </form>
+                </div>
+
+                <!-- TAB 2: Sicurezza -->
+                <div id="security" class="tab-content">
+                    <h3>Cambio Password</h3>
+                    <div class="security-image">
+                        <img src="Progetto/frontend definitivo/Profile_ChangePSW.png" alt="Cambio Password" class="responsive-img">
+                    </div>
+                    <form class="profile-form">
+                        <div class="form-group">
+                            <label for="old-password">Password Attuale:</label>
+                            <input type="password" id="old-password" placeholder="••••••••" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="new-password">Nuova Password:</label>
+                            <input type="password" id="new-password" placeholder="••••••••" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-new-password">Conferma Password:</label>
+                            <input type="password" id="confirm-new-password" placeholder="••••••••" class="form-input">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Aggiorna Password</button>
+                    </form>
+                </div>
+
+                <!-- TAB 3: Obiettivi -->
+                <div id="goals" class="tab-content">
+                    <h3>I Tuoi Obiettivi Fitness</h3>
+                    <div class="goals-list">
+                        <div class="goal-item">
+                            <h4>Perdere 5 kg</h4>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 60%;"></div>
+                            </div>
+                            <p class="progress-text">3 kg persi / 5 kg target</p>
+                        </div>
+                        <div class="goal-item">
+                            <h4>Aumentare Massa Muscolare</h4>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 45%;"></div>
+                            </div>
+                            <p class="progress-text">2.5 kg guadagnati / 5 kg target</p>
+                        </div>
+                        <div class="goal-item">
+                            <h4>Migliorare Resistenza</h4>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%;"></div>
+                            </div>
+                            <p class="progress-text">30 allenamenti completati / 40 target</p>
+                        </div>
+                        <div class="goal-item">
+                            <h4>Raggiungere Panca 120 kg</h4>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 80%;"></div>
+                            </div>
+                            <p class="progress-text">96 kg / 120 kg</p>
+                        </div>
+                        <div class="goal-item">
+                            <h4>Completare 50 Allenamenti</h4>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 90%;"></div>
+                            </div>
+                            <p class="progress-text">45 allenamenti / 50 target</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary" onclick="alert('Nuovo obiettivo aggiunto!')">+ Aggiungi Nuovo Obiettivo</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 PumpApp. Tutti i diritti riservati.</p>
+    </footer>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
