@@ -1,0 +1,7 @@
+{
+  "name": "PumpApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
