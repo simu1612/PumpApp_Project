@@ -1,0 +1,106 @@
+//creatore di database
+//verbose = Errors will be explained in a more detailed way
+const sqlite3 = require("sqlite3").verbose()
+
+//db variabile con cui apriamo il database sqlite
+
+const db = new sqlite3.Database("./db/database.sqlite", (err) => {
+    if (err) console.error(err.message);
+    else console.log("Connected to SQLite DB");
+});
+
+// Create database's table  
+// this command runs at the database startup 
+
+
+//url video e image video da criptare??
+db.exec(
+    `
+    CREATE TABLE IF NOT EXISTS USER(
+        ID_US INTEGER PRIMARY KEY AUTOINCREMENT,
+        USERNAME VARCHAR(20) UNIQUE NOT NULL,
+        EMAIL VARCHAR(100) UNIQUE NOT NULL,
+        NOME VARCHAR(50),
+        COGNOME VARCHAR(50),
+        PRIV INTEGER NOT NULL,
+        PASSWORD VARCHAR(255) NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS SCHEDA (
+        ID_SCHEDA INTEGER PRIMARY KEY AUTOINCREMENT,
+        NOME_SCHEDA VARCHAR(255) NOT NULL UNIQUE
+    );
+
+    CREATE TABLE IF NOT EXISTS ESERCIZIO (
+        ID_ES INTEGER PRIMARY KEY AUTOINCREMENT,
+        NOME_ESERCIZIO VARCHAR(100) NOT NULL UNIQUE,
+        VIDEO_URL VARCHAR(255),
+        IMAGE_URL VARCHAR(255)
+        );
+
+    CREATE TABLE IF NOT EXISTS TAG_GRUPPO {
+        NOME VARCHAR(50) PRIMARY KEY,
+        RED INTEGER NOT NULL,
+        GREEN INTEGER NOT NULL,
+        BLUE INTEGER NOT NULL
+    }
+
+    CREATE TABLE IF NOT EXISTS U_TAG_ESERCIZIO {
+        ID_ES INTEGER,
+        NOME_TAG VARCHAR(50), 
+        FOREIGN KEY (ID_ES) REFERENCES ESERCIZIO(ID_ES) ON DELETE CASCADE,
+        FOREIGN KEY (NOME_TAG) REFERENCES TAG_GRUPPO(NOME) ON DELETE CASCADE,
+        PRIMARY KEY (ID_ES, NOME_TAG)
+    }
+
+    CREATE TABLE IF NOT EXISTS ASSEGNAZIONE (
+        ID_CLIENTE INTEGER,
+        ID_ALLENATORE INTEGER,
+        ID_SCHEDA INTEGER,
+        FOREIGN KEY (ID_CLIENTE) REFERENCES USER(ID_US) ON DELETE CASCADE,
+        FOREIGN KEY (ID_ALLENATORE) REFERENCES USER(ID_US) ON DELETE CASCADE,
+        FOREIGN KEY (ID_SCHEDA) REFERENCES SCHEDA(ID_SCHEDA) ON DELETE CASCADE, 
+        PRIMARY KEY (ID_CLIENTE, ID_ALLENATORE, ID_SCHEDA)
+    );
+
+    CREATE TABLE IF NOT EXISTS ALLENAMENTO (
+        ID_ALLENAMENTO INTEGER PRIMARY KEY AUTOINCREMENT, 
+        ID_SCHEDA INTEGER,
+        ID_ES INTEGER,
+        GIORNO INT NOT NULL,
+        RIPETIZIONI VARCHAR(50) NOT NULL,
+        FOREIGN KEY (ID_SCHEDA) REFERENCES SCHEDA(ID_SCHEDA) ON DELETE CASCADE,
+        FOREIGN KEY (ID_ES) REFERENCES ESERCIZIO(ID_ES) ON DELETE CASCADE
+    );
+
+    CREATE TABLE IF NOT EXISTS ALL_STAT(
+        ID_UTENTE INTEGER, 
+        ID_ES INTEGER, 
+        GIORNO DATE NOT NULL, 
+        PESO FLOAT NOT NULL, 
+        FOREIGN KEY (ID_UTENTE) REFERENCES USER(ID_US) ON DELETE CASCADE,
+        FOREIGN KEY (ID_ES) REFERENCES ESERCIZIO(ID_ES) ON DELETE CASCADE,
+        PRIMARY KEY (ID_UTENTE, ID_ES, GIORNO)
+    };
+
+    CREATE TABLE IF NOT EXISTS CALENDARIO (
+        ID_UTENTE INTEGER, 
+        DATA DATE NOT NULL, 
+        ID_ALLENAMENTO INTEGER, 
+        FOREIGN KEY (ID_UTENTE) REFERENCES USER(ID_US) ON DELETE CASCADE,
+        FOREIGN KEY (ID_ALLENAMENTO) REFERENCES ALLENAMENTO(ID_ALLENAMENTO) ON DELETE CASCADE,
+        PRIMARY KEY (ID_UTENTE, DATA)
+    );
+
+    `
+)
+
+//CHIEDERE SE DEVO FAR SÌ CHE VI POSSANO ESSERE PIÙ ALLENAMENTI SCHEDULED IN UNA GIORNATA, IN QUEL CASO CAMBIO LA CHIAVE PRIMARIA DEL CALENDARIO
+
+var serverPublicKey = 123; // Sostituisci con la tua chiave pubblica reale
+var serverSecretKey = "fc94e8a8a0104dd5bd40610a49677068cab3c8ea64064ee3bb4dea22b1f4669b"; //Ovviamente essendo il progetto su github metterei uestio in una cartella a parte 
+
+
+// Funzione per inserire un nuovo utente e aggiornare la chiave
+
+module.exports = { db, serverPublicKey, serverSecretKey};
